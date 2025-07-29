@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Card } from './components/Card.jsx'
+import axios from "axios"
 // import './App.css'
 
 // let MusicData = {
@@ -10,9 +11,20 @@ import { Card } from './components/Card.jsx'
 //   duration: "3:05",
 // }
 
-import { Playlist } from '../../backend/MusicData.data.js'
+// import { Playlist } from '../../backend/MusicData.data.js'
 
 function App() {
+  const [Playlist, setPlaylist] = useState([])
+
+  useEffect (() => {
+    axios.get('/api/musicData')
+    .then((response) => {
+      setPlaylist(response.data)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }, [])
 
   return (
     <>
