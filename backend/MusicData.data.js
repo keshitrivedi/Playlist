@@ -5,7 +5,6 @@ let Playlist = [
         artist: "Vansire",
         audio: "../ElevenWeeks_audio.mp3",
         thumbnail: "../vansire_albumcover.jpeg",
-        duration: "3:05"
     },
     {
         id: 2,
@@ -13,7 +12,6 @@ let Playlist = [
         artist: "Willis",
         audio: "../Overthinker_audio.mp3",
         thumbnail: "../Overthinker_albumcover.png",
-        duration: "3:30"
     },
     {
         id: 3,
@@ -21,7 +19,6 @@ let Playlist = [
         artist: "Autumn's Gray Solace",
         audio: "../Lost_audio.mp3",
         thumbnail: "../Lost_albumcover.png",
-        duration: "3:35"
     },
     {
         id: 4,
@@ -29,7 +26,6 @@ let Playlist = [
         artist: "Ohio",
         audio: "../Upward_audio.mp3",
         thumbnail: "../Upward_albumcover.png",
-        duration: "22:19"
     },
     {
         id: 5,
@@ -37,7 +33,6 @@ let Playlist = [
         artist: "Saahel",
         audio: "../TujhiMein_audio.mp3",
         thumbnail: "../TujhiMein_albumcover.png",
-        duration: "3:03"
     },
     {
         id: 6,
@@ -45,7 +40,6 @@ let Playlist = [
         artist: "daudi matsiko",
         audio: "../Honest_audio.mp3",
         thumbnail: "../Honest_albumcover.png",
-        duration: "4:55"
     },
     {
         id: 7,
@@ -53,7 +47,6 @@ let Playlist = [
         artist: "Vansire",
         audio: "../Reflections_audio.mp3",
         thumbnail: "../AngelYouth_albumcover.jpg",
-        duration: "2:22"
     },
     {
         id: 8,
@@ -61,7 +54,6 @@ let Playlist = [
         artist: "Vansire",
         audio: "../SynthMan_audio.mp3",
         thumbnail: "../AngelYouth_albumcover.jpg",
-        duration: "2:44"
     },
     {
         id: 9,
@@ -69,8 +61,11 @@ let Playlist = [
         artist: "Vansire",
         audio: "../SubwayTrain_audio.mp3",
         thumbnail: "../AngelYouth_albumcover.jpg",
-        duration: "2:22"
     },
 ]
+
+Playlist.forEach((song, index) => {
+    song.duration = toString(song.audio.duration)
+})
 
 export {Playlist}

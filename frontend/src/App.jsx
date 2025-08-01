@@ -15,6 +15,7 @@ import axios from "axios"
 
 function App() {
   const [Playlist, setPlaylist] = useState([])
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(null)
 
   useEffect (() => {
     axios.get('/api/musicData')
@@ -26,6 +27,15 @@ function App() {
     })
   }, [])
 
+  const handlePlay = (songID) => {
+    setCurrentlyPlaying(songID)
+  }
+
+  const handlePause = () => {
+    setCurrentlyPlaying(null)
+  }
+  
+
   return (
     <>
       {/* <Card {...MusicData} />
@@ -34,7 +44,11 @@ function App() {
 
       {
         Playlist.map((song, index) => (
-          <Card key={song.id} {...song} />
+          <Card key={song.id} {...song} 
+          isPlaying={currentlyPlaying === song.id}
+            onPlay={() => handlePlay(song.id)}
+            onPause={handlePause}
+          />
         ))
       }
     </>

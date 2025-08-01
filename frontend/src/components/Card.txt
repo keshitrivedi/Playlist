@@ -1,25 +1,27 @@
-import { useRef, useEffect } from "react"
+import { useRef, useState } from "react"
 
 function Card (MusicData) {
     const audioRef = useRef(null);
-    const { isPlaying, onPlay, onPause } = MusicData;
+    const [isPlaying, setIsPlaying] = useState(false);
 
-    useEffect(() => {
+    // const changeColourClick = () => {
+    //     const allMusicCards = document.querySelectorAll('#musicCard')
+    //     allMusicCards.forEach((card, index) => {
+    //         card.addEventListener('click', (e) => {
+    //             console.log(`Card ${index} was clicked`)
+    //         })
+    //     })
+    // }
+
+    const playAudio = () => {
         if (audioRef.current) {
             if (isPlaying) {
-                audioRef.current.play()
-            } else {
                 audioRef.current.pause()
+            } else {
+                audioRef.current.play()
             }
         }
-    }, [isPlaying])
-
-    const togglePlayPause = () => {
-        if (isPlaying) {
-            onPause()
-        } else {
-            onPlay()
-        }
+        setIsPlaying(!isPlaying)
     }
 
     return (
@@ -29,7 +31,7 @@ function Card (MusicData) {
                 Moosic
             </audio>
 
-            <div id='musicCard' className={`flex flex-row justify-between p-3 ${isPlaying ? 'bg-zinc-800' : 'bg-zinc-900'} m-2 text-white rounded-lg`} onClick={togglePlayPause}>
+            <div id='musicCard' className={`flex flex-row justify-between p-3 ${isPlaying ? 'bg-zinc-800' : 'bg-zinc-900'} m-2 text-white rounded-lg`} onClick={playAudio}>
                 <div id="mainContent" className="flex flex-row">
                     <div id='albumCover'>
                         <img src={MusicData.thumbnail} alt="album cover" className="max-w-30" />
